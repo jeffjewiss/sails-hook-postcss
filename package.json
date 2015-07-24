@@ -25,6 +25,7 @@
   "dependencies": {
     "glob": "^5.0.13",
     "mkdirp": "^0.5.1",
+    "object-assign": "^3.0.0",
     "postcss": "^4.1.16",
     "watch": "^0.16.0"
   }
