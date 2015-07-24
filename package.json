@@ -1,0 +1,31 @@
+{
+  "name": "sails-hook-postcss",
+  "version": "0.0.0",
+  "description": "Compile CSS with Postcss and watch for changes.",
+  "main": "index.js",
+  "sails": {
+    "isHook": true
+  },
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jeffjewiss/sails-hook-postcss.git"
+  },
+  "keywords": [
+    "hook",
+    "postcss",
+    "sails"
+  ],
+  "author": "Jeff Jewiss",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jeffjewiss/sails-hook-postcss/issues"
+  },
+  "homepage": "https://github.com/jeffjewiss/sails-hook-postcss#readme",
+  "dependencies": {
+    "glob": "^5.0.13",
+    "mkdirp": "^0.5.1",
+    "postcss": "^4.1.16",
+    "watch": "^0.16.0"
+  }
+}
