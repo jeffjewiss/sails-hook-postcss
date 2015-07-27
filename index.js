@@ -5,6 +5,7 @@ var postcss = require('postcss');
 var mkdirp = require('mkdirp');
 var watch = require('watch');
 var objectAssign = require('object-assign');
+var async = require('async');
 
 /**
  * sails-hook-postcss
@@ -69,32 +70,48 @@ module.exports = function(sails) {
 
       sails.log.verbose('Compiling CSS with Postcss.');
 
-      glob('**/*.css', {
-        nonull: false,
-        cwd: cssSourcePath
-      }, function(err, files) {
+      async.series([
+        function(done) {
+          glob('**/*.css', {
+            nonull: false,
+            cwd: cssSourcePath
+          }, function(err, files) {
+            if (err) return done(err);
+
+            return done(null, files);
+          });
+        },
+
+        function(done) {
+          mkdirp(cssDestPath, function(err) {
+            if (err) return done(err);
+
+            return done();
+          });
+        }
+      ],
+
+      function(err, results) {
         if (err) return sails.log.error(err);
 
-        mkdirp(cssDestPath, function(err) {
-          if (err) return sails.log.error(err);
+        var files = results[0];
 
-          files.forEach(function(file) {
-            var from = path.resolve(cssSourcePath, file);
-            var to = path.resolve(cssDestPath, file);
+        async.each(files, function(file) {
+          var from = path.resolve(cssSourcePath, file);
+          var to = path.resolve(cssDestPath, file);
 
-            fs.readFile(from, { encoding: 'utf8' }, function(err, data) {
-              if (err) throw err;
+          fs.readFile(from, { encoding: 'utf8' }, function(err, data) {
+            if (err) throw err;
 
-              processor
-                .process(data, { from: from, to: to })
-                .then(function (result) {
-                  fs.writeFileSync(to, result.css);
-                })
-                .catch(function (error) {
-                  sails.log.error(error);
-                });
+            processor
+              .process(data, { from: from, to: to })
+              .then(function (result) {
+                fs.writeFileSync(to, result.css);
+              })
+              .catch(function (error) {
+                sails.log.error(error);
+              });
 
-            });
           });
         });
       });
