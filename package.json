@@ -1,6 +1,6 @@
 {
   "name": "sails-hook-postcss",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Compile CSS with Postcss and watch for changes.",
   "main": "index.js",
   "sails": {
