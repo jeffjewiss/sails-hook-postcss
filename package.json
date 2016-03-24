@@ -24,10 +24,10 @@
   "homepage": "https://github.com/jeffjewiss/sails-hook-postcss#readme",
   "dependencies": {
     "async": "^1.4.0",
-    "glob": "^5.0.13",
+    "glob": "^7.0.3",
     "mkdirp": "^0.5.1",
-    "object-assign": "^3.0.0",
+    "object-assign": "^4.0.1",
     "postcss": "^5.0.0",
-    "watch": "^0.16.0"
+    "watch": "^0.17.1"
   }
 }
