@@ -1,0 +1,6 @@
+.editorconfig
+.npmignore
+**/.gitkeep
+test/
+.travis.yml
+tmp/

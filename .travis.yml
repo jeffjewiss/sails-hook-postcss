@@ -1,0 +1,8 @@
+language: node_js
+node_js:
+  - 5
+  - 4
+
+notifications:
+  email: true
+after_success: npm run coverage
