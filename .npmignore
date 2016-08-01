@@ -1,5 +1,6 @@
 .editorconfig
 .npmignore
+.nyc_output
 **/.gitkeep
 test/
 .travis.yml

@@ -116,30 +116,27 @@ module.exports = function (sails) {
 
         var files = results[0]
 
-        async.each(files, function (file) {
+        async.each(files, function (file, cb) {
           var from = path.resolve(cssSourcePath, file)
           var to = path.resolve(cssDestPath, file)
+          var data = fs.readFileSync(from, 'utf8')
 
-          fs.readFile(from, { encoding: 'utf8' }, function (err, data) {
-            if (err) {
-              throw err
-            }
-
-            processor
-              .process(data, { from: from, to: to })
-              .then(function (result) {
-                fs.writeFileSync(to, result.css)
-              })
-              .catch(function (err) {
-                sails.log.error(err)
-              })
-          }, function (err) {
-            if (err) {
+          processor
+            .process(data, { from: from, to: to })
+            .then(function (result) {
+              fs.writeFileSync(to, result.css)
+            })
+            .catch(function (err) {
               sails.log.error(err)
-            }
+            })
 
-            sails.emit('hook:postcss:compiled')
-          })
+          cb()
+        }, function (err) {
+          if (err) {
+            sails.log.error(err)
+          }
+
+          sails.emit('hook:postcss:compiled')
         })
       })
     }

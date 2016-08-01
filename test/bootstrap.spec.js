@@ -2,6 +2,10 @@
 
 'use strict'
 
+var path = require('path')
+var rimraf = require('rimraf')
+var async = require('async')
+var glob = require('glob')
 var sails = require('sails')
 var pseudoelements = require('postcss-pseudoelements')
 
@@ -11,10 +15,12 @@ var pseudoelements = require('postcss-pseudoelements')
 before(function (done) {
   sails.on('hook:postcss:configuring', function () {
     sails.config.postcss = {
-      enabled: false,
+      enabled: true,
       plugins: [
         pseudoelements()
-      ]
+      ],
+      cssSourcePath: path.resolve(process.cwd(), 'fixture/'),
+      cssDestPath: path.resolve(process.cwd(), 'tmp/')
     }
   })
 
@@ -47,9 +53,17 @@ before(function (done) {
  * Lowering sails after done testing
  */
 after(function (done) {
-  if (sails) {
-    return sails.lower(done)
-  }
+  glob('tmp/*', function (err, files) {
+    if (err) {
+      return done(err)
+    } else {
+      async.forEach(files, rimraf, function () {
+        if (sails) {
+          return sails.lower(done)
+        }
 
-  return done()
+        return done()
+      })
+    }
+  })
 })
