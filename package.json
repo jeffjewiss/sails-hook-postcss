@@ -28,7 +28,7 @@
   },
   "homepage": "https://github.com/jeffjewiss/sails-hook-postcss#readme",
   "dependencies": {
-    "async": "^1.4.0",
+    "async": "^2.0.1",
     "glob": "^7.0.3",
     "mkdirp": "^0.5.1",
     "object-assign": "^4.0.1",
