@@ -31,7 +31,7 @@
     "async": "^2.0.1",
     "glob": "^7.0.3",
     "mkdirp": "^0.5.1",
-    "object-assign": "^4.0.1",
+    "object-assign": "^4.1.0",
     "postcss": "^5.1.1",
     "watch": "^0.17.1"
   },
