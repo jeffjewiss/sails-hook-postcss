@@ -33,7 +33,7 @@
     "mkdirp": "^0.5.1",
     "object-assign": "^4.1.0",
     "postcss": "^5.1.1",
-    "watch": "^0.17.1"
+    "watch": "^0.19.1"
   },
   "devDependencies": {
     "chai": "3.5.0",
