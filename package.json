@@ -44,6 +44,6 @@
     "rimraf": "2.5.4",
     "sails": "0.12.4",
     "snazzy": "4.0.1",
-    "standard": "7.1.2"
+    "standard": "8.0.0"
   }
 }
