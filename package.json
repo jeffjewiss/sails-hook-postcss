@@ -42,7 +42,7 @@
     "nyc": "8.4.0",
     "postcss-pseudoelements": "3.0.0",
     "rimraf": "2.5.4",
-    "sails": "0.12.8",
+    "sails": "0.12.11",
     "snazzy": "5.0.0",
     "standard": "8.5.0"
   }
