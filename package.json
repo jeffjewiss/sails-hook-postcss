@@ -39,7 +39,7 @@
     "chai": "4.1.1",
     "coveralls": "2.11.14",
     "mocha": "3.1.2",
-    "nyc": "11.0.3",
+    "nyc": "11.1.0",
     "postcss-pseudoelements": "3.0.0",
     "rimraf": "2.5.4",
     "sails": "0.12.8",
