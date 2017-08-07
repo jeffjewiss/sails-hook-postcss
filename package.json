@@ -37,7 +37,7 @@
   },
   "devDependencies": {
     "chai": "3.5.0",
-    "coveralls": "2.11.14",
+    "coveralls": "2.11.16",
     "mocha": "3.1.2",
     "nyc": "11.0.3",
     "postcss-pseudoelements": "3.0.0",
